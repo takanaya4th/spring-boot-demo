@@ -12,3 +12,17 @@ flyway:
     user: postgres
     password: root
     locations: db/migration
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    org:
+      springframework: WARN
+    com:
+      example:
+        demo:
+          structure: 
+            mapper: DEBUG

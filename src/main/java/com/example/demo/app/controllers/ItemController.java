@@ -1,6 +1,9 @@
-package com.example.demo.controller;
+package com.example.demo.app.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.app.form.ItemForm;
+import com.example.demo.app.helper.ItemHelper;
+import com.example.demo.domain.services.ItemService;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -12,17 +15,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.domain.Item;
-import com.example.demo.service.ItemService;
-
 @Controller
 @RequestMapping("/items")
 public class ItemController {
 
-	String redirect = "redirect:/items";
+	private String redirect = "redirect:/items";
 
-	@Autowired
-	private ItemService itemService;
+	private final ItemService itemService;
+	private final ItemHelper itemHelper;
+
+	public ItemController(ItemService itemService, ItemHelper itemHelper) {
+		this.itemService = itemService;
+		this.itemHelper = itemHelper;
+	}
 
 	@GetMapping
 	public String index(Model model) {
@@ -31,48 +36,48 @@ public class ItemController {
 	}
 
 	@GetMapping("{id}")
-	public String show(@PathVariable Long id, Model model) {
+	public String show(@PathVariable Integer id, Model model) {
 		model.addAttribute("item", itemService.findOne(id));
 		return "show";
 	}
 
 	@GetMapping("new")
-	public String newItem(@ModelAttribute("item") Item item, Model model) {
+	public String newItem(@ModelAttribute("item") ItemForm item, Model model) {
 		return "new";
 	}
 
 	@GetMapping("{id}/edit")
-	public String edit(@PathVariable Long id, @ModelAttribute("item") Item item, Model model) {
+	public String edit(@PathVariable Integer id, @ModelAttribute("item") ItemForm item, Model model) {
 		model.addAttribute("item", itemService.findOne(id));
 		return "edit";
 	}
 
 	@PostMapping
-	public String create(@ModelAttribute("item") @Validated Item item, BindingResult result, Model model) {
+	public String create(@ModelAttribute("item") @Validated ItemForm item, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			return "new";
 		} else {
-			itemService.save(item);
+			itemService.create(itemHelper.formToEntity(item));
 			return redirect;
 		}
 	}
 
 	@PostMapping("edit/{id}")
-	public String update(@PathVariable Long id, @ModelAttribute("item") @Validated Item item, BindingResult result,
-			Model model) {
+	public String update(@PathVariable Integer id, @ModelAttribute("item") @Validated ItemForm item,
+			BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			model.addAttribute("item", item);
 			return "edit";
 		} else {
 			item.setId(id);
-			itemService.update(item);
+			itemService.update(itemHelper.formToEntity(item));
 			return redirect;
 		}
 	}
 
 	@PostMapping("{id}")
 	@Transactional(readOnly = false)
-	public String delete(@PathVariable Long id) {
+	public String delete(@PathVariable Integer id) {
 		itemService.delete(id);
 		return redirect;
 	}
