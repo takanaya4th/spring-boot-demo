@@ -32,7 +32,7 @@ public class ItemController {
     @GetMapping
     public String index(Model model) {
         model.addAttribute("items", itemService.findAll());
-        return "index";
+        return "index_bk";
     }
 
     @GetMapping("{id}")
