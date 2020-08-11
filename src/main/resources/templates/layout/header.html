@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>header</title>
+</head>
+
+<body>
+    <div th:fragment="header" th:remove="tag">
+        <div id="header" class="container">
+            <div id="top-header" class="d-flex flex-column flex-md-row align-items-center">
+                <a class="my-0 mr-md-auto font-weight-normal" href="#">リンク1　リンク2</a>
+                <nav class="my-2 my-md-0 mr-md-3">
+                    <a class="p-2" href="#">リンク</a>
+                    <a class="p-2" href="#">リンク</a>
+                </nav>
+                <form id="web-search-form" class="form-inline mt-2 mt-md-0">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="ウェブ検索" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="second-header" class="d-flex flex-column flex-md-row align-items-center">
+                <a href="#" id="logo">
+                    <img th:src="@{/images/logo.png}" alt="ロゴ">
+                </a>
+                <a class="p-2" href="#" id="profile-img">
+                    <img class="rounded-circle" th:src="@{/images/nobody.png}" alt="ユーザーアイコン">
+                </a>
+                <div class="align-self-strech p-2">
+                    <a href="#">ユーザーネーム</a><br>
+                    <a href="#">会員グレード</a>
+                </div>
+                <div class="align-self-strech p-2">
+                    <a href="#">ポイント</a><br>
+                    <a href="#">お知らせ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
