@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/template :: layout(~{::title},~{::body/content()})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{components/template :: layout(~{::title},~{::body/content()})}">
 
 <head>
     <title>デモ</title>
@@ -33,29 +33,15 @@
     <div id="main">
         <div class="container">
             <div class="row">
-                <div class="col-3">
-                    <div id="area-search">
-                        <p>地域から探す</p>
-                        <select id="area-pulldown">
-                            <option>選択してください</option>
-                            <option>地域A</option>
-                        </select>
-                        <button type="button" class="btn btn-default">検索</button>
+                <div th:if="${prefectures}" class="col-3">
+                    <div th:replace="~{components/side-menu :: sideMenu(${prefectures})}"></div>
+                </div>
+                <div th:if="${regions}" class="col-9">
+                    <div th:replace="~{components/search-main :: searchMain(${regions})}">
                     </div>
                 </div>
-                <div class="col-9">
-                    <div id="search-main">
-                        <p>地域選択</p>
-                        <ul class="list-unstyled">
-                            <li th:each="region: ${regions}" th:object="${region}">
-                                <p class="region-text" th:text="*{regionName}"></p>
-                                <ul class="list-unstyled">
-                                    <li th:each="prefecture: *{prefectures}" th:object="${prefecture}">
-                                        <a href="#" th:text=*{prefectureName}></a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                <div th:if="${prefectureDetail}" class="col-9">
+                    <div th:replace="~{components/prefecture-detail :: prefectureDetail(${prefectureDetail})}">
                     </div>
                 </div>
             </div>

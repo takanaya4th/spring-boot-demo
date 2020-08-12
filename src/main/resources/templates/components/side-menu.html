@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>side menu</title>
+</head>
+
+<body>
+    <div th:fragment="sideMenu (prefectures)" th:remove="tag">
+        <div id="area-search">
+            <p>地域から探す</p>
+            <select id="area-pulldown">
+                <option>選択してください</option>
+                <option th:each="prefecture: ${prefectures}" th:object="${prefecture}" th:value="*{id}"
+                    th:text="*{name}">
+                </option>
+            </select>
+            <button type="button" class="btn btn-default">検索</button>
+        </div>
+    </div>
+</body>
+
+</html>

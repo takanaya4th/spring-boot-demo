@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>prefecture detail</title>
+</head>
+
+<body>
+    <div th:fragment="prefectureDetail (profectureDetail)" th:remove="tag">
+        <div id="prefecture-detail">
+            <p class="search-main-title">市区町村選択</p>
+            <p class="region-text" th:text="${profectureDetail.name}"></p>
+            <ul class="list-unstyled">
+                <li class="list-node" th:each="municipality: ${profectureDetail.municipalities}"
+                    th:object="${municipality}">
+                    <a class="prefecture-text" th:href="@{'/' + ${profectureDetail.id} + '/' + *{id}}"
+                        th:text=*{name}></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

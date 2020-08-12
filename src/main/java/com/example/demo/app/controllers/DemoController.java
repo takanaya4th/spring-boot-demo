@@ -1,13 +1,11 @@
 package com.example.demo.app.controllers;
 
-import java.util.List;
-
-import com.example.demo.domain.dao.entity.RegionEntity;
 import com.example.demo.domain.services.DemoService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class DemoController {
@@ -21,8 +19,15 @@ public class DemoController {
     @GetMapping
     public String index(Model model) {
         // 都道府県リスト
-        List<RegionEntity> regions = demoService.getRegions();
-        model.addAttribute("regions", regions);
+        model.addAttribute("regions", demoService.getRegions());
+        model.addAttribute("prefectures", demoService.getPrefectures());
+        return "index";
+    }
+
+    @GetMapping("/{prefectureId}")
+    public String prefectureDetail(@PathVariable int prefectureId, Model model) {
+        model.addAttribute("prefectureDetail", demoService.getPrefectureDetail(prefectureId));
+        model.addAttribute("prefectures", demoService.getPrefectures());
         return "index";
     }
 }

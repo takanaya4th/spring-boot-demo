@@ -1,4 +1,4 @@
-package com.example.demo.structure.repositoriyImpl;
+package com.example.demo.structure.repositoryImpl;
 
 import java.util.Collection;
 import java.util.Optional;

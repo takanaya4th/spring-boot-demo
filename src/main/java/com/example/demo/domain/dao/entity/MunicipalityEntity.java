@@ -1,7 +1,5 @@
 package com.example.demo.domain.dao.entity;
 
-import java.util.Collection;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,9 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PrefectureEntity {
+public class MunicipalityEntity {
     private int id;
-    private int regionId;
+    private int prefectureId;
     private String name;
-    private Collection<MunicipalityEntity> municipalities;
 }

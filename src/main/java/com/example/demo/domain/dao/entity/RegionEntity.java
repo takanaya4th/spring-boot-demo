@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RegionEntity {
-    private int regionId;
-    private String regionName;
+    private int id;
+    private String name;
     private Collection<PrefectureEntity> prefectures;
 }
