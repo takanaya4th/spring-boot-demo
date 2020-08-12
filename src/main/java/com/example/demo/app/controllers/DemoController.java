@@ -1,8 +1,5 @@
 package com.example.demo.app.controllers;
 
-import java.util.List;
-
-import com.example.demo.domain.dao.entity.RegionEntity;
 import com.example.demo.domain.services.DemoService;
 
 import org.springframework.stereotype.Controller;
@@ -21,8 +18,8 @@ public class DemoController {
     @GetMapping
     public String index(Model model) {
         // 都道府県リスト
-        List<RegionEntity> regions = demoService.getRegions();
-        model.addAttribute("regions", regions);
+        model.addAttribute("regions", demoService.getRegions());
+        model.addAttribute("prefectures", demoService.getPrefectures());
         return "index";
     }
 }

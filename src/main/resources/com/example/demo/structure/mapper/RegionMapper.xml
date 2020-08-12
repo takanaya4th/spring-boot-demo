@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.structure.mapper.RegionMapper">
+  <select id="findAll" resultMap="regionResult">
+    SELECT
+        r.id,
+        r.name,
+        p.id prefecture_id,
+        p.name prefecture_name
+    FROM regions r
+    INNER JOIN prefectures p
+        ON r.id = p.region_id
+    ORDER BY r.id
+  </select>
+
+  <resultMap type="com.example.demo.domain.dao.entity.RegionEntity" id="regionResult">
+    <id column="id" property="id" />
+    <result column="name" property="name" />
+    <collection property="prefectures" ofType="com.example.demo.domain.dao.entity.PrefectureEntity">
+        <result column="prefecture_id" property="id" />
+        <result column="id" property="regionId" />
+        <result column="prefecture_name" property="name" />
+    </collection>
+  </resultMap>
+</mapper>

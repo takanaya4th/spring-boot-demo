@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PrefectureEntity {
-    private int prefectureId;
-    private String prefectureName;
+    private int id;
+    private int regionId;
+    private String name;
 }

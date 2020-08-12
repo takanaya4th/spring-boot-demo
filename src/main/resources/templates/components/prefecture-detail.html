@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>prefecture detail</title>
+</head>
+
+<body>
+    <div th:fragment="prefectureDetail (municipalities)" th:remove="tag">
+        <div id="search-main">
+            <p>市町村選択</p>
+            <ul class="list-unstyled">
+                <li th:each="municipality: ${municipalities}" th:object="${municipality}">
+                    <p class="region-text" th:text="*{name}"></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
