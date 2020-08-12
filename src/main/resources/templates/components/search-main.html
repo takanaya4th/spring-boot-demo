@@ -9,13 +9,13 @@
     <div th:fragment="searchMain (regions)" th:remove="tag">
         <div class="col-9">
             <div id="search-main">
-                <p>地域選択</p>
+                <p class="search-main-title">地域選択</p>
                 <ul class="list-unstyled">
                     <li th:each="region: ${regions}" th:object="${region}">
                         <p class="region-text" th:text="*{name}"></p>
                         <ul class="list-unstyled">
-                            <li class="prefecture-list" th:each="prefecture: *{prefectures}" th:object="${prefecture}">
-                                <a class="prefecture-text" href="#" th:text=*{name}></a>
+                            <li class="list-node" th:each="prefecture: *{prefectures}" th:object="${prefecture}">
+                                <a class="prefecture-text" th:href="@{'/' + *{id}}" th:text=*{name}></a>
                             </li>
                         </ul>
                     </li>

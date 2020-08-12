@@ -6,12 +6,15 @@
 </head>
 
 <body>
-    <div th:fragment="prefectureDetail (municipalities)" th:remove="tag">
-        <div id="search-main">
-            <p>市町村選択</p>
+    <div th:fragment="prefectureDetail (profectureDetail)" th:remove="tag">
+        <div id="prefecture-detail">
+            <p class="search-main-title">市区町村選択</p>
+            <p class="region-text" th:text="${profectureDetail.name}"></p>
             <ul class="list-unstyled">
-                <li th:each="municipality: ${municipalities}" th:object="${municipality}">
-                    <p class="region-text" th:text="*{name}"></p>
+                <li class="list-node" th:each="municipality: ${profectureDetail.municipalities}"
+                    th:object="${municipality}">
+                    <a class="prefecture-text" th:href="@{'/' + ${profectureDetail.id} + '/' + *{id}}"
+                        th:text=*{name}></a>
                 </li>
             </ul>
         </div>

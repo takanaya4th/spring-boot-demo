@@ -27,4 +27,8 @@ public class DemoService {
     public Collection<PrefectureEntity> getPrefectures() {
         return prefectureRepository.findAll();
     }
+
+    public PrefectureEntity getPrefectureDetail(int prefectureId) {
+        return prefectureRepository.findById(prefectureId).orElseThrow(RuntimeException::new);
+    }
 }

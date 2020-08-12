@@ -25,3 +25,11 @@ CREATE TABLE IF NOT EXISTS public.prefectures (
   PRIMARY KEY (id),
   FOREIGN KEY (region_id) REFERENCES public.regions(id)
 );
+
+CREATE TABLE IF NOT EXISTS public.municipalities (
+  id SERIAL NOT NULL,
+  prefecture_id integer NOT NULL,
+  name varchar(255) NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (prefecture_id) REFERENCES public.prefectures(id)
+);

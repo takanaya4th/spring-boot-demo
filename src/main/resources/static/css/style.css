@@ -114,18 +114,19 @@ body {
     padding-left: 13px;
 }
 
-#search-main {
+#search-main,
+#prefecture-detail {
     background: #fff;
     padding: 20px;
 }
 
-#search-main > p {
+.search-main-title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 26px;
 }
 
-.region-text {
+.region-text{
     font-size: 18px;
     padding-left: 4px;
     background: #e8f3d2;
@@ -133,7 +134,7 @@ body {
     margin-bottom: 19px;
 }
 
-.prefecture-list {
+.list-node {
     margin-bottom: 20px;
 }
 .prefecture-text {

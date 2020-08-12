@@ -33,8 +33,16 @@
     <div id="main">
         <div class="container">
             <div class="row">
-                <div th:replace="${prefectures} ? ~{components/side-menu :: sideMenu(${prefectures})}"></div>
-                <div th:replace="${regions} ? ~{components/search-main :: searchMain(${regions})}">
+                <div th:if="${prefectures}" class="col-3">
+                    <div th:replace="~{components/side-menu :: sideMenu(${prefectures})}"></div>
+                </div>
+                <div th:if="${regions}" class="col-9">
+                    <div th:replace="~{components/search-main :: searchMain(${regions})}">
+                    </div>
+                </div>
+                <div th:if="${prefectureDetail}" class="col-9">
+                    <div th:replace="~{components/prefecture-detail :: prefectureDetail(${prefectureDetail})}">
+                    </div>
                 </div>
             </div>
         </div>

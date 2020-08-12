@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.structure.mapper.PrefectureMapper">
+  <select id="findById" resultMap="prefectureResult">
+    SELECT
+        p.id,
+        p.name,
+        m.id municipality_id,
+        m.name municipality_name
+    FROM prefectures p
+    INNER JOIN municipalities m
+        ON p.id = m.prefecture_id
+    WHERE p.id = #{prefectureId}
+    ORDER BY p.id
+  </select>
+
+  <resultMap type="com.example.demo.domain.dao.entity.PrefectureEntity" id="prefectureResult">
+    <id column="id" property="id" />
+    <result column="name" property="name" />
+    <collection property="municipalities" ofType="com.example.demo.domain.dao.entity.MunicipalityEntity">
+        <result column="municipality_id" property="id" />
+        <result column="id" property="prefectureId" />
+        <result column="municipality_name" property="name" />
+    </collection>
+  </resultMap>
+</mapper>

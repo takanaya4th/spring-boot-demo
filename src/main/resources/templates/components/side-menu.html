@@ -7,17 +7,15 @@
 
 <body>
     <div th:fragment="sideMenu (prefectures)" th:remove="tag">
-        <div class="col-3">
-            <div id="area-search">
-                <p>地域から探す</p>
-                <select id="area-pulldown">
-                    <option>選択してください</option>
-                    <option th:each="prefecture: ${prefectures}" th:object="${prefecture}" th:value="*{id}"
-                        th:text="*{name}">
-                    </option>
-                </select>
-                <button type="button" class="btn btn-default">検索</button>
-            </div>
+        <div id="area-search">
+            <p>地域から探す</p>
+            <select id="area-pulldown">
+                <option>選択してください</option>
+                <option th:each="prefecture: ${prefectures}" th:object="${prefecture}" th:value="*{id}"
+                    th:text="*{name}">
+                </option>
+            </select>
+            <button type="button" class="btn btn-default">検索</button>
         </div>
     </div>
 </body>
