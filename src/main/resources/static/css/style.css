@@ -10,7 +10,16 @@ body {
         max-width: 970px;
     }
 }
+.font14{
+    font-size: 14px;
+}
 
+/* フッター */
+#footer {
+    border-top: 1px solid #ebebeb;
+}
+
+/* ヘッダー */
 #header {
     font-size: small;
 }
@@ -20,6 +29,12 @@ body {
     background-color: #f7f7f8;
 }
 
+/* エラーページ */
+#root-link {
+    margin-bottom: 180px;
+}
+
+/* インデックス */
 #web-search-form > div > input {
     height: 26px;
     font-size: 12px;
@@ -140,3 +155,5 @@ body {
 .prefecture-text {
     font-size: 18px;
 }
+
+

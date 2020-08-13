@@ -25,7 +25,7 @@ public class DemoController {
     }
 
     @GetMapping("/{prefectureId}")
-    public String prefectureDetail(@PathVariable int prefectureId, Model model) {
+    public String prefectureDetail(@PathVariable int prefectureId, Model model) throws Exception {
         model.addAttribute("prefectureDetail", demoService.getPrefectureDetail(prefectureId));
         model.addAttribute("prefectures", demoService.getPrefectures());
         return "index";

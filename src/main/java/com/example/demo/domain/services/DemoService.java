@@ -7,6 +7,7 @@ import com.example.demo.domain.dao.entity.RegionEntity;
 import com.example.demo.domain.repositories.PrefectureRepository;
 import com.example.demo.domain.repositories.RegionRepository;
 
+import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,7 +29,8 @@ public class DemoService {
         return prefectureRepository.findAll();
     }
 
-    public PrefectureEntity getPrefectureDetail(int prefectureId) {
-        return prefectureRepository.findById(prefectureId).orElseThrow(RuntimeException::new);
+    public PrefectureEntity getPrefectureDetail(int prefectureId) throws Exception {
+        return prefectureRepository.findById(prefectureId)
+                .orElseThrow(() -> new NotFoundException("Not founded this prefecture id=" + prefectureId));
     }
 }
