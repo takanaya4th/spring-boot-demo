@@ -13,7 +13,7 @@
             <ul class="list-unstyled">
                 <li class="list-node" th:each="municipality: ${profectureDetail.municipalities}"
                     th:object="${municipality}">
-                    <a class="prefecture-text" th:href="@{'/' + ${profectureDetail.id} + '/' + *{id}}"
+                    <a class="prefecture-text" th:href="@{'/payment/' + ${profectureDetail.id} + '/' + *{id}}"
                         th:text=*{name}></a>
                 </li>
             </ul>

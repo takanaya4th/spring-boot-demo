@@ -30,4 +30,9 @@ public class DemoController {
         model.addAttribute("prefectures", demoService.getPrefectures());
         return "index";
     }
+
+    @GetMapping("payment/{prefectureId}/{municipalityId}")
+    public String payment(@PathVariable int prefectureId, @PathVariable int municipalityId, Model model) {
+        return "payment";
+    }
 }
