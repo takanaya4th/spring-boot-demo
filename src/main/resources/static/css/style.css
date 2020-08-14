@@ -156,4 +156,14 @@ body {
     font-size: 18px;
 }
 
+/* payment */
+#payment-header {
+    border-bottom: 1px solid #ababab;
+    border-top: 1px solid #ababab;
+}
+
+#payment-header-top {
+    border-bottom: #ababab 1px dotted;
+}
+
 
