@@ -1,11 +1,16 @@
 version: '3'
 services:
   db:
-    build: .
+    image: oracle/database:12.2.0.1-ee
+    container_name: oracle
     ports:
-      - 5432:5432
+      - 1521:1521
+      - 5500:5500
     volumes:
-      - ./postgres/init:/docker-entrypoint-initdb.d
+      - ./oracle/init:/docker-entrypoint-initdb.d
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: root
+      - TZ=Asia/Tokyo
+      - ORACLE_SID=ORCL
+      - ORACLE_PDB=oracle
+      - ORACLE_PWD=Oracle12
+      - ORACLE_CHARACTERSET=AL32UTF8
